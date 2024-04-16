@@ -67,25 +67,25 @@ line1 = ax.plot(x, y_series_0, color='green', marker='o', linestyle='-', label='
 line2 = ax.plot(x, y, color='blue', marker='o', linestyle='-', label='Difficulty')
 
 # Add labels and title
-ax.set_xlabel('Date', fontweight='bold')
-ax.set_ylabel('Values', fontweight='bold')
+ax.set_xlabel('No. of Attempts', fontweight='bold')
+ax.set_ylabel('Difficulty', fontweight='bold')
 
 # Add main title
 plt.suptitle('Question Convergence', fontsize=16, fontweight='bold', x=0.5)
-plt.title('Hidden vs Public Rank Distribution', fontsize=12, color='gray', x=0.5)
+plt.title('Initial Difficulty vs Difficulty Evolution', fontsize=12, color='gray', x=0.5)
 
 # Set x-axis limits to ensure all data points are visible
 ax.set_xlim(min(x), max(x))
 
 # Rotate x-axis labels for better visibility
-ax.set_xticklabels(x, rotation=90, ha='right')
+# ax.set_xticklabels(x, rotation=90, ha='right')
 
 # Add a legend
 ax.legend()
 
 # Set y-axis limit to ensure all data points are visible
 max_y = max(y)
-ax.set_ylim(0, math.ceil(max_y / 1000) * 1000)
+ax.set_ylim(0, 1500)
 
 # Fit a logarithmic regression line (trend line) for y_series_0
 z_series_0 = np.polyfit(x, np.log(y), 1)  # Fit a logarithmic regression
@@ -104,5 +104,3 @@ script_filename = os.path.splitext(os.path.basename(__file__))[0]
 # Save the figure as a JPG with the same name as the Python script
 plt.savefig(f'{script_filename}.jpg', dpi=1000)  # Set the resolution (dpi) as needed
 
-# Show the plot
-plt.show()
